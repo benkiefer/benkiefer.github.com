@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Languages | Ben Kiefer]]></title>
+  <link href="http://benkiefer.github.com/blog/categories/languages/atom.xml" rel="self"/>
+  <link href="http://benkiefer.github.com/"/>
+  <updated>2013-03-27T04:06:15+01:00</updated>
+  <id>http://benkiefer.github.com/</id>
+  <author>
+    <name><![CDATA[Ben Kiefer]]></name>
+    <email><![CDATA[ben.a.kiefer@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Thoughts on Python]]></title>
+    <link href="http://benkiefer.github.com/blog/2013/03/25/thinking-about-python/"/>
+    <updated>2013-03-25T20:41:00+01:00</updated>
+    <id>http://benkiefer.github.com/blog/2013/03/25/thinking-about-python</id>
+    <content type="html"><![CDATA[<p>A few weeks ago, I cracked open <a href="http://shop.oreilly.com/product/0636920025696.do">Think Python</a>, and so far it's been a fun ride.</p>
+
+<p>The interactive nature of the book has helped reinforce the various language quirks for me, and while the language so far may not be that much of a challenge (due in part to its similarities with Groovy/Ruby), the algorythms in each chapter have kept me going. I'm even considering trying to show my daughter TurtleWorld.</p>
+
+<p>Oreilly's Head First books come close in terms of readability, but even after putting away three or four so far, I'd still say that Think Python's got the edge.</p>
+
+<p>If you're new to programming, this is a great place to start, particularly if you can snag the e-book during a half-off sale.</p>
+]]></content>
+  </entry>
+  
+</feed>
