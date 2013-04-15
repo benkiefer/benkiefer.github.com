@@ -1,0 +1,28 @@
+---
+layout: post
+title: "Now I am the master..."
+date: 2013-04-15 18:21
+comments: false
+categories: 
+ - Agile
+ - Apprenticeship
+ - Pairing
+ - Mentoring
+---
+*I guess [Apprenticeship] basically means having the attitude that there's always a better/smarter/faster way to do what you just did and what you're currently doing. Apprenticeship is the state/process of evolving and looking for better ways and finding people, companies and situations that force you to learn those better/smarter/faster ways.* - Marten Gustafson
+
+I stumbled upon [Apprenticeship Patterns](http://ofps.oreilly.com/titles/9780596518387/introduction.html), by Hoover and Oshineye the other day, and it hit home.
+
+The authors propose that developers can benefit from a psuedo-medieval pattern of master/journeyman/apprentice relationships, regardless of their role in the relationships. I say "psuedo-medieval" because their pattern ignores the mandatory terms and authority structures of the medieval world, focusing instead on the more important aspect of knowledge exchange. 
+
+<!--more-->
+
+For example:
+
+ * Apprentices benefit from having an "Expert within Earshot" who can help steer them to the answer faster than blind googling.
+ * Journeymen are able to refine their craft by sharing their skills with apprentices while still picking up new skills from their masters.
+ * Masters are challenged to get better by working with lower-level laborers who are hungry to get better at their craft.
+ 
+This resonated heavily with me, mainly because I was able to work with real-life masters while I was getting started in programming. They were able to keep me from doing stupid things by showing me the right way first, and giving me the opportunity to learn why that was the right way through conversation and examples.
+
+I'm not finished with the book yet, but I like where it's headed, and the agile/pair-programming fan in me hopes that the authors will spend some time talking about the effect that pairing in particular can have in this type of setup.
