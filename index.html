@@ -9,7 +9,7 @@
   <meta name="author" content="Ben Kiefer">
 
   
-  <meta name="description" content="I guess [Apprenticeship] basically means having the attitude that there&#8217;s always a better/smarter/faster way to do what you just did and what &hellip;">
+  <meta name="description" content="Mockito provides mechanisms for mocking most of the stuff you need, but remains mysteriously silent on constructor mocking. &#8220;Newing up&#8221; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,67 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/23/powermockito-constructor-mocking/">PowerMockito: Constructor Mocking</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-23T18:17:00+01:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mockito provides mechanisms for mocking most of the stuff you need, but remains mysteriously silent on constructor mocking. &#8220;Newing up&#8221; an object when you are mocking in your unit tests is a pain, and I often found myself writing tiny factories to isolate where I was using a constructor.</p>
+
+<p>For example, to test the following code&#8230;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public class Helper {
+</span><span class='line'> 
+</span><span class='line'>  public void doSomething(String arg){
+</span><span class='line'>      new Something(arg).doSomething();
+</span><span class='line'>  }
+</span><span class='line'>
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/04/23/powermockito-constructor-mocking/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -176,6 +237,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/23/powermockito-constructor-mocking/">PowerMockito: Constructor Mocking</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/04/15/now-i-am-the-master-dot-dot-dot/">Now I am the master&#8230;</a>

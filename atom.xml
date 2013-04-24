@@ -4,7 +4,7 @@
   <title><![CDATA[Ben Kiefer]]></title>
   <link href="http://benkiefer.github.com/atom.xml" rel="self"/>
   <link href="http://benkiefer.github.com/"/>
-  <updated>2013-04-15T18:57:10+01:00</updated>
+  <updated>2013-04-24T02:53:09+01:00</updated>
   <id>http://benkiefer.github.com/</id>
   <author>
     <name><![CDATA[Ben Kiefer]]></name>
@@ -12,6 +12,132 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[PowerMockito: Constructor Mocking]]></title>
+    <link href="http://benkiefer.github.com/blog/2013/04/23/powermockito-constructor-mocking/"/>
+    <updated>2013-04-23T18:17:00+01:00</updated>
+    <id>http://benkiefer.github.com/blog/2013/04/23/powermockito-constructor-mocking</id>
+    <content type="html"><![CDATA[<p>Mockito provides mechanisms for mocking most of the stuff you need, but remains mysteriously silent on constructor mocking. &#8220;Newing up&#8221; an object when you are mocking in your unit tests is a pain, and I often found myself writing tiny factories to isolate where I was using a constructor.</p>
+
+<p>For example, to test the following code&#8230;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public class Helper {
+</span><span class='line'> 
+</span><span class='line'>  public void doSomething(String arg){
+</span><span class='line'>      new Something(arg).doSomething();
+</span><span class='line'>  }
+</span><span class='line'>
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
+
+
+<p>You might end up writing something like this to make it more testable&#8230;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public class Helper {
+</span><span class='line'>    
+</span><span class='line'>  private SomethingFactory somethingFactory;
+</span><span class='line'>        
+</span><span class='line'>  public void doSomething(String arg) {
+</span><span class='line'>      Something something = somethingFactory().build(arg);
+</span><span class='line'>      something.doit();
+</span><span class='line'>  }
+</span><span class='line'>  
+</span><span class='line'>  public void setSomethingFactory(SomethingFactory somethingFactory) {
+</span><span class='line'>      this.somethingFactory = somethingFactory;
+</span><span class='line'>  }
+</span><span class='line'>   
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you can inject a mock SomethingFactory in your test, and all the real SomethingFactory does is create your object with the appropriate arg and return it.</p>
+
+<p>PowerMockito offers an enhancement to the Mockito API that let&#8217;s you sidestep this problem with its &#8220;whenNew&#8221; method, but their documentation is lacking.</p>
+
+<p>To use, &#8220;whenNew&#8221;, you will need to supplement your typical Mockito test with a few enhancements.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>@RunWith(PowerMockRunner.class)
+</span><span class='line'>@PrepareForTest(Helper.class)
+</span><span class='line'>public class HelperTest {
+</span><span class='line'>  @Mock
+</span><span class='line'>  private Something mockSomething;
+</span><span class='line'>      
+</span><span class='line'>  @InjectMocks
+</span><span class='line'>  private Helper helper;
+</span><span class='line'>      
+</span><span class='line'>  @Test
+</span><span class='line'>  public void doSomething() throws Exception {
+</span><span class='line'>      String argument = "arg";
+</span><span class='line'>          
+</span><span class='line'>      PowerMockito.whenNew(Something.class).withArguments(argument).thenReturn(mockSomething);
+</span><span class='line'>          
+</span><span class='line'>      helper.doSomething(argument);
+</span><span class='line'>          
+</span><span class='line'>      verify(mockSomething).doIt();
+</span><span class='line'>  }
+</span><span class='line'>  
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The important changes over a typical Mockito test are:</p>
+
+<ul>
+<li>The use of the PowerMockRunner in our JUnit @RunWith annotation</li>
+<li>The use of the @PrepareForTest method where we specify the name of the class we are testing (Helper.class in this case).</li>
+<li>The &#8220;throws Exception&#8221; on our method signature caused by the usage of &#8220;whenNew&#8221;</li>
+<li>The static invocation of the &#8220;whenNew&#8221; method, and our passing in the &#8220;argument&#8221; parameter&#8221;.</li>
+</ul>
+
+
+<p>With these changes, you can roll back to the previous code, getting rid of your unnecessary factory and getting rid of some of the clutter from our Helper java class.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Now I am the master...]]></title>
