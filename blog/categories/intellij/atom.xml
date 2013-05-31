@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Intellij | Ben Kiefer]]></title>
+  <link href="http://benkiefer.github.com/blog/categories/intellij/atom.xml" rel="self"/>
+  <link href="http://benkiefer.github.com/"/>
+  <updated>2013-05-31T02:59:01+01:00</updated>
+  <id>http://benkiefer.github.com/</id>
+  <author>
+    <name><![CDATA[Ben Kiefer]]></name>
+    <email><![CDATA[ben.a.kiefer@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rapid Web Development with Intellij and Tomcat]]></title>
+    <link href="http://benkiefer.github.com/blog/2013/05/31/rapid-web-development-with-intellij-and-tomcat/"/>
+    <updated>2013-05-31T02:31:00+01:00</updated>
+    <id>http://benkiefer.github.com/blog/2013/05/31/rapid-web-development-with-intellij-and-tomcat</id>
+    <content type="html"><![CDATA[<p>At a previous position, I was a big fan of using the Maven Jetty Plugin to develop web apps, particularly when I was working on JSPs that needed some tweaking for different browsers. The main drawback to this approach was that using the plugin for multiple applications was cumbersome and the documentation (at the time) wasn't that great.</p>
+
+<p>For the last few months, I've been doing all of my development through Intellij and Tomcat using a Run/Debug configuration for the app, and I didn't hit a snag, until yesterday.</p>
+
+<p>One of the big perks of using the Run/Debug configuration is the availability of the "Reload classes and resources" function when you make a change. Selecting this option gets you near-Jetty speed when you want to make changes to classes or JSPs and see those changes reflected immediately. There are a few caviats though. You will still need to restart the container if you:</p>
+
+<ul>
+<li>change a method signature</li>
+<li>add a class</li>
+<li>rename a class</li>
+<li>change your Spring context</li>
+</ul>
+
+
+<p>However, if you are changing the inner workings of a method or altering a JSP, a class/resource reload will reflect your change almost instantly.</p>
+
+<p>The important gotcha that I found today, is that this option is only available if all the applications running your container are running exploded, which isn't a big deal if you only run one app, but when you run 7 it can be an issue. If any of your apps aren't exploded, you will see a different option, "Hot Swap", which, from what I can tell, is about the same as a complete restart from a performance perspective.</p>
+
+<p>I made the mistake of selecting one of my wars, rather than the exploded version of the war, and got bit until I double checked my app configuration. Hope this save you some pain.</p>
+]]></content>
+  </entry>
+  
+</feed>

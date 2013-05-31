@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Thoughts on Python - Ben Kiefer</title>
+  <title>Rapid Web Development with Intellij and Tomcat - Ben Kiefer</title>
   <meta name="author" content="Ben Kiefer">
 
   
-  <meta name="description" content="A few weeks ago, I cracked open Think Python, and so far it&#8217;s been a fun ride. The interactive nature of the book has helped reinforce the &hellip;">
+  <meta name="description" content="At a previous position, I was a big fan of using the Maven Jetty Plugin to develop web apps, particularly when I was working on JSPs that needed some &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://benkiefer.github.com/blog/2013/03/25/thinking-about-python">
+  <link rel="canonical" href="http://benkiefer.github.com/blog/2013/05/31/rapid-web-development-with-intellij-and-tomcat">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ben Kiefer" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Thoughts on Python</h1>
+      <h1 class="entry-title">Rapid Web Development With Intellij and Tomcat</h1>
     
     
       <p class="meta">
@@ -96,20 +96,32 @@
   
 
 
-<time datetime="2013-03-25T20:41:00+01:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
+<time datetime="2013-05-31T02:31:00+01:00" pubdate data-updated="true">May 31<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>A few weeks ago, I cracked open <a href="http://shop.oreilly.com/product/0636920025696.do">Think Python</a>, and so far it&#8217;s been a fun ride.</p>
+<div class="entry-content"><p>At a previous position, I was a big fan of using the Maven Jetty Plugin to develop web apps, particularly when I was working on JSPs that needed some tweaking for different browsers. The main drawback to this approach was that using the plugin for multiple applications was cumbersome and the documentation (at the time) wasn&#8217;t that great.</p>
 
-<p>The interactive nature of the book has helped reinforce the various language quirks for me, and while the language so far may not be that much of a challenge (due in part to its similarities with Groovy/Ruby), the algorythms in each chapter have kept me going. I&#8217;m even considering trying to show my daughter TurtleWorld.</p>
+<p>For the last few months, I&#8217;ve been doing all of my development through Intellij and Tomcat using a Run/Debug configuration for the app, and I didn&#8217;t hit a snag, until yesterday.</p>
 
-<p>Oreilly&#8217;s Head First books come close in terms of readability, but even after putting away three or four so far, I&#8217;d still say that Think Python&#8217;s got the edge.</p>
+<p>One of the big perks of using the Run/Debug configuration is the availability of the &#8220;Reload classes and resources&#8221; function when you make a change. Selecting this option gets you near-Jetty speed when you want to make changes to classes or JSPs and see those changes reflected immediately. There are a few caviats though. You will still need to restart the container if you:</p>
 
-<p>If you&#8217;re new to programming, this is a great place to start, particularly if you can snag the e-book during a half-off sale.</p>
+<ul>
+<li>change a method signature</li>
+<li>add a class</li>
+<li>rename a class</li>
+<li>change your Spring context</li>
+</ul>
+
+
+<p>However, if you are changing the inner workings of a method or altering a JSP, a class/resource reload will reflect your change almost instantly.</p>
+
+<p>The important gotcha that I found today, is that this option is only available if all the applications running your container are running exploded, which isn&#8217;t a big deal if you only run one app, but when you run 7 it can be an issue. If any of your apps aren&#8217;t exploded, you will see a different option, &#8220;Hot Swap&#8221;, which, from what I can tell, is about the same as a complete restart from a performance perspective.</p>
+
+<p>I made the mistake of selecting one of my wars, rather than the exploded version of the war, and got bit until I double checked my app configuration. Hope this save you some pain.</p>
 </div>
 
 
@@ -132,12 +144,12 @@
   
 
 
-<time datetime="2013-03-25T20:41:00+01:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
+<time datetime="2013-05-31T02:31:00+01:00" pubdate data-updated="true">May 31<span>st</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/languages/'>Languages</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/reading/'>Reading</a>
+    <a class='category' href='/blog/categories/intellij/'>Intellij</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/tomcat/'>Tomcat</a>
   
 </span>
 
@@ -146,7 +158,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://benkiefer.github.com/blog/2013/03/25/thinking-about-python/" data-via="" data-counturl="http://benkiefer.github.com/blog/2013/03/25/thinking-about-python/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://benkiefer.github.com/blog/2013/05/31/rapid-web-development-with-intellij-and-tomcat/" data-via="" data-counturl="http://benkiefer.github.com/blog/2013/05/31/rapid-web-development-with-intellij-and-tomcat/" >Tweet</a>
   
   
   
@@ -155,8 +167,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2013/04/23/powermockito-constructor-mocking/" title="Previous Post: PowerMockito: Constructor Mocking">&laquo; PowerMockito: Constructor Mocking</a>
       
-        <a class="basic-alignment right" href="/blog/2013/04/15/now-i-am-the-master-dot-dot-dot/" title="Next Post: Now I am the master...">Now I am the master... &raquo;</a>
       
     </p>
   </footer>
