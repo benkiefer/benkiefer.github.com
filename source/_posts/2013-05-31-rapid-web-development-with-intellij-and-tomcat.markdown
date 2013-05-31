@@ -23,4 +23,4 @@ However, if you are changing the inner workings of a method or altering a JSP, a
 
 The important gotcha that I found today, is that this option is only available if all the applications running your container are running exploded, which isn't a big deal if you only run one app, but when you run 7 it can be an issue. If any of your apps aren't exploded, you will see a different option, "Hot Swap", which, from what I can tell, is about the same as a complete restart from a performance perspective.
 
-I made the mistake of selecting one of my wars, rather than the exploded version of the war, and got bit until I double checked my app configuration. Hope this save you some pain.
+I made the mistake of selecting one of my wars, rather than the exploded version of the war, and got bit until I double checked my app configuration. Hope this saves you some pain.
