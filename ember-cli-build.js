@@ -5,11 +5,12 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     sassOptions: {
       includePaths: [
-        'bower_components/foundation/scss'
+        'bower_components/foundation/scss',
+        'bower_components/font-awesome/scss'
       ]
-    //},
-    //emberCliFontAwesome: {
-    //  useScss: true
+    },
+    emberCliFontAwesome: {
+      useScss: true
     }
   });
 
